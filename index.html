@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#20184f" />
+  <meta name="description" content="Misión Código: un juego gratis de programación por bloques para chicos y chicas. Aprendé secuencias, repeticiones y condiciones jugando." />
+  <title>Misión Código — ¡Aprendé a programar jugando!</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a href="#inicio" class="brand" aria-label="Misión Código, inicio">
+        <span class="brand-mark"><span class="brand-bracket">&lt;</span><span class="brand-spark">✦</span><span class="brand-bracket">&gt;</span></span>
+        <span>MISIÓN <strong>CÓDIGO</strong></span>
+      </a>
+      <div class="header-actions">
+        <span class="header-tag"><span class="live-dot"></span> APRENDÉ JUGANDO</span>
+        <button class="icon-button" id="helpButton" type="button" aria-label="Cómo jugar" title="Cómo jugar">?</button>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-spark spark-one">✦</div>
+        <div class="hero-spark spark-two">✳</div>
+        <div class="hero-spark spark-three">✦</div>
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-star">★</span> TU AVENTURA DIGITAL COMIENZA ACÁ</div>
+          <h1 id="heroTitle">¡Pequeñas ideas,<br/><span>grandes códigos!</span></h1>
+          <p>Ayudá a <strong>Pixi</strong>, nuestro robot explorador, a llegar a su destino. ¡Vas a aprender a programar sin darte cuenta!</p>
+          <div class="hero-pills">
+            <span><span class="pill-icon purple">⌘</span> Bloques fáciles</span>
+            <span><span class="pill-icon orange">★</span> 9 misiones</span>
+            <span><span class="pill-icon green">✓</span> A tu ritmo</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <span class="code-float code-a">{ }</span><span class="code-float code-b">&lt;/&gt;</span><span class="code-float code-c">★</span>
+          <div class="robot-hero">
+            <div class="bot-antenna"><span></span></div>
+            <div class="bot-head"><div class="bot-face"><span class="bot-eye"></span><span class="bot-eye"></span><span class="bot-smile"></span></div></div>
+            <div class="bot-body"><span class="bot-heart">♥</span></div>
+            <div class="bot-arm arm-left"></div><div class="bot-arm arm-right"></div>
+            <div class="bot-foot foot-left"></div><div class="bot-foot foot-right"></div>
+          </div>
+          <div class="hero-platform"></div>
+        </div>
+      </section>
+
+      <section class="section-head" aria-label="Progreso">
+        <div>
+          <span class="section-kicker">CENTRO DE MISIONES <span class="section-kicker-line"></span></span>
+          <h2>¡Vamos a programar! <span class="handwave">👋</span></h2>
+          <p>Elegí bloques, armá el camino y tocá <strong>¡Ejecutar!</strong></p>
+        </div>
+        <div class="progress-card">
+          <span class="progress-trophy">🏆</span>
+          <div><strong id="earnedStars">0</strong><span> / 27 estrellas</span><small>TU PROGRESO</small></div>
+        </div>
+      </section>
+
+      <nav class="world-nav" id="worldNav" aria-label="Mundos de programación"></nav>
+
+      <section class="game-layout" aria-label="Juego de programación">
+        <div class="mission-panel">
+          <div class="mission-top">
+            <div class="mission-meta"><span id="levelTag" class="level-tag">MISIÓN 01</span><span id="levelType" class="type-tag">SECUENCIAS</span></div>
+            <div id="levelStars" class="level-stars" aria-label="Estrellas del nivel">☆☆☆</div>
+          </div>
+          <h3 id="levelTitle">Un pequeño paso</h3>
+          <p id="levelDescription" class="mission-description"></p>
+
+          <div class="game-board-frame">
+            <div class="board-topline"><span><span class="board-status-dot"></span> CAMPO DE EXPLORACIÓN</span><span>🤖 PIXI</span></div>
+            <div id="gameBoard" class="game-board" role="img" aria-label="Tablero de juego"></div>
+            <div class="board-legend"><span><i class="legend-pixi">●</i> Pixi</span><span><i class="legend-goal">◎</i> Portal</span><span><i class="legend-rock">◆</i> Roca</span><span><i class="legend-star">★</i> Estrella</span></div>
+          </div>
+          <div id="gameFeedback" class="game-feedback" role="status" aria-live="polite"><span class="feedback-avatar">💡</span><span>¡Hola! Soy Pixi. ¡Armemos juntos el primer código!</span></div>
+          <div class="mission-extras">
+            <button class="text-button" id="hintButton" type="button">💡 Dame una pista</button>
+            <span id="stepCounter">0 pasos realizados</span>
+          </div>
+          <div id="hintBox" class="hint-box" hidden></div>
+        </div>
+
+        <div class="coding-panel">
+          <div class="coding-header">
+            <div class="code-icon">&lt;/&gt;</div>
+            <div><span class="panel-eyebrow">TU LABORATORIO</span><h3>Armá tu código <span>✨</span></h3></div>
+          </div>
+          <p class="coding-intro">Tocá los bloques para agregarlos a tu programa. ¡El orden importa!</p>
+
+          <div class="block-section-heading"><span>1</span> ELEGÍ TUS BLOQUES</div>
+          <div class="block-palette" id="blockPalette">
+            <button type="button" class="palette-block move up" data-add="up"><span>↑</span> ARRIBA</button>
+            <button type="button" class="palette-block move right" data-add="right"><span>→</span> DERECHA</button>
+            <button type="button" class="palette-block move down" data-add="down"><span>↓</span> ABAJO</button>
+            <button type="button" class="palette-block move left" data-add="left"><span>←</span> IZQUIERDA</button>
+            <button type="button" class="palette-block repeat" data-add="repeat" id="repeatBlock"><span>↻</span> REPETIR <b>×3</b></button>
+            <button type="button" class="palette-block if-star" data-add="ifStar" id="ifBlock"><span>✦</span> SI HAY ★, TOMAR</button>
+          </div>
+          <p class="palette-note" id="paletteNote">💜 Empezamos con movimientos simples.</p>
+
+          <div class="block-section-heading editor-heading"><span>2</span> TU PROGRAMA <em id="blockCounter">0 BLOQUES</em></div>
+          <div class="program-area" id="programArea">
+            <div class="program-empty" id="programEmpty">
+              <div class="empty-glyph"><span>+</span><span>↗</span><span>✧</span></div>
+              <strong>¡Tu aventura empieza acá!</strong>
+              <small>Elegí un bloque de arriba para comenzar.</small>
+            </div>
+            <ol id="programList" class="program-list" aria-label="Bloques de mi programa"></ol>
+          </div>
+          <div class="code-actions">
+            <button type="button" class="run-button" id="runButton"><span class="run-symbol">▶</span> ¡EJECUTAR! <span class="run-arrows">››</span></button>
+            <div class="secondary-actions"><button type="button" id="undoButton">↶ Deshacer</button><button type="button" id="clearButton">♻ Borrar todo</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="level-section" aria-label="Elegir nivel">
+        <div class="level-section-heading"><div><span class="section-kicker">TU MAPA DE AVENTURAS</span><h2>Las próximas misiones <span>🚀</span></h2></div><p>¡Desbloqueá nuevas misiones a medida que avanzás!</p></div>
+        <div id="levelGrid" class="level-grid"></div>
+      </section>
+
+      <section class="learning-strip"><span class="learning-icon">🧠</span><div><strong id="learningTitle">Hoy aprendemos: Secuencias</strong><p id="learningText">Programar es dar instrucciones en orden. ¡La computadora sigue exactamente lo que le decimos!</p></div><span class="learning-deco">✦</span></section>
+    </main>
+    <footer class="site-footer"><span>HECHO PARA MENTES CURIOSAS <span>💜</span></span><span>JUGÁ · EXPERIMENTÁ · APRENDÉ</span></footer>
+  </div>
+
+  <dialog id="helpDialog" class="modal">
+    <div class="modal-inner help-modal"><button type="button" class="modal-close" data-close="helpDialog" aria-label="Cerrar">×</button><div class="modal-emoji">🤖</div><span class="modal-kicker">¡HOLA, PROGRAMADOR/A!</span><h2>¿Cómo se juega?</h2>
+      <div class="help-steps"><div><span>1</span><p><strong>Elegí bloques</strong> con flechas para indicarle a Pixi por dónde caminar.</p></div><div><span>2</span><p><strong>Ordenalos</strong> en tu programa. Podés moverlos, cambiarlos o borrarlos.</p></div><div><span>3</span><p><strong>Ejecutá</strong> y mirá qué sucede. Si falla, probá otra vez: ¡así se aprende!</p></div></div>
+      <p class="help-tip">💡 En los próximos mundos descubrirás cómo <strong>repetir</strong> instrucciones y tomar <strong>decisiones</strong>.</p><button class="modal-main" type="button" data-close="helpDialog">¡ENTENDIDO!</button>
+    </div>
+  </dialog>
+
+  <dialog id="successDialog" class="modal success-modal">
+    <div class="modal-inner"><button type="button" class="modal-close" data-close="successDialog" aria-label="Cerrar">×</button><div class="modal-emoji success-emoji">🎉</div><span class="modal-kicker">¡CÓDIGO COMPLETADO!</span><h2>¡Misión cumplida!</h2><p>¡Lo lograste! Pixi llegó a su destino gracias a tus instrucciones.</p><div class="big-stars" id="resultStars">★★★</div><div class="result-points" id="resultPoints">+300 PUNTOS</div><button class="modal-main" type="button" id="nextLevelButton">SIGUIENTE MISIÓN <span>→</span></button><button class="retry-link" type="button" id="replayButton">Volver a jugar esta misión</button></div>
+  </dialog>
+  <script src="app.js" defer></script>
+</body>
+</html>
